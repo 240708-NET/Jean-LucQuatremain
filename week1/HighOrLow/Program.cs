@@ -2,12 +2,16 @@ class Program
 {
 	static void Main( string[] args )
 	{
+		Console.WriteLine("Welcome to High-Or-Low!");
+
+		Game newGame = new Game();
+		newGame.PlayGame();
+
+		/*
 		int targetNumber;
 		int guessNumber;
 		string guessString;
 		int roundCount = 0;
-
-		Console.WriteLine("Welcome to High-Or-Low!");
 
 		// Computer should choose a random number
 		// User should be able to sbumit guesses
@@ -41,6 +45,7 @@ class Program
 				Console.WriteLine("Oops, too low!");
 			}
 		} while (guessNumber != targetNumber);
+		*/
 		Console.WriteLine("Thanks for playing High-Or-Low!");
 	}
 }
