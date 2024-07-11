@@ -1,8 +1,10 @@
 public enum EnemyType
 {
-    Orc,
     Fae,
-    Behemoth,
+    Beast,
+    Orc,
     Minotaur,
-    Beast
+    Behemoth
+    
+    
 }

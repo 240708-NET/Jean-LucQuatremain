@@ -1,14 +1,36 @@
 public class Enemy
 {
-    public EnemyType enemyType;
-    public int health;
+    public EnemyType enemyType{ get; set; }
+    public int health{ get; set; }
 
-    public Enemy(EnemyType enemyType)
+    public Enemy(EnemyType type)
     {
-        this.enemyType = enemyType;
+        enemyType = type;
+        setHealth(type);
     }
 
-    public void setHealth(EnemyType enemyType){
+    public void setHealth(EnemyType type)
+    {
+
+        switch (type)
+        {
+            case EnemyType.Fae:
+                health = 50;
+                break;
+            case EnemyType.Beast:
+                health = 100;
+                break;
+            case EnemyType.Orc:
+                health = 150;
+                break;
+            case EnemyType.Minotaur:
+                health = 200;
+                break;
+            case EnemyType.Behemoth:
+                health = 250;
+                break;
+        }
+        /*
         if(enemyType == EnemyType.Orc)
         {
             this.health = 75;
@@ -29,6 +51,7 @@ public class Enemy
         {
             this.health = 100;
         }
+        */
     }
 
     public void Attack(Player player)
