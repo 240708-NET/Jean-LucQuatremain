@@ -34,19 +34,19 @@ public class Player
         {
             damage = rand.Next(1, 13);
             enemy.health -= damage;
-            Console.WriteLine($"{name} attacks {enemy.enemyType} for {damage} damage!");
+            Console.WriteLine($"{name} attacks the {enemy.enemyType} for {damage} damage!");
         }
         else if(this.playerClass == PlayerClass.Mage)
         {
             damage = rand.Next(1, 21);
             enemy.health -= damage;
-            Console.WriteLine($"{name} attacks {enemy.enemyType} for {damage} damage!");
+            Console.WriteLine($"{name} attacks the {enemy.enemyType} for {damage} damage!");
         }
         else if(this.playerClass == PlayerClass.Barbarian)
         {
             damage = rand.Next(1, 9);
             enemy.health -= damage;
-            Console.WriteLine($"{name} attacks {enemy.enemyType} for {damage} damage!");
+            Console.WriteLine($"{name} attacks the {enemy.enemyType} for {damage} damage!");
         }
     }
 }

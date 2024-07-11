@@ -41,14 +41,14 @@ public class PlayPvE
         Console.WriteLine();
 
         // Get user class choice
-        Console.WriteLine($"{player.name}, what is your class?");
+        Console.WriteLine($"{playerName}, what is your class?");
         Console.Write("1 for Mage, 2 for Barbarian, 3 for Warrior: ");
         string classChoice = Console.ReadLine();
         int classChoiceNum;
         // Validate user class choice
         while (!int.TryParse(classChoice, out classChoiceNum) || classChoiceNum < 1 || classChoiceNum > 3)
         {
-            Console.Write("Please choose a valid class choice: 1 for Mage, 2 for Barbarian, 3 for Warrior");
+            Console.Write("Please choose a valid class choice: 1 for Mage, 2 for Barbarian, 3 for Warrior: ");
             classChoice = Console.ReadLine();
             Console.WriteLine();
         }
@@ -77,10 +77,14 @@ public class PlayPvE
         if (numRounds == 1)
         {
             Console.WriteLine("Let's enter the dungeon and fight the enemy!");
+            Console.WriteLine("Press any key to continue: ");
+            Console.ReadLine();
         }
         else
         {
             Console.WriteLine("Let's enter the first dungeon!");
+            Console.WriteLine("Press any key to continue: ");
+            Console.ReadLine();
         }
     }
 
