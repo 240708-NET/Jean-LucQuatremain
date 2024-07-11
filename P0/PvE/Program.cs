@@ -1,3 +1,4 @@
-﻿PlayPvE newGame = new PlayPvE();
+﻿PlayPvE game = new PlayPvE();
 
-newGame.InitializeGame();
+game.InitializeGame();
+game.PlayGame();

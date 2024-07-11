@@ -5,9 +5,9 @@
 - I should be able to choose my dificulty(number of encounters)
 - I should be able to choose my name
 - I should be able to choose my class
-- Computer should generate random monster for encounter
 
 ### Gameplay
+- Computer should generate random monster for encounter
 - I should be able to attack the enemy
 - The enemy should be able to attack me
 - I should be able to see my health and the enemy's health
