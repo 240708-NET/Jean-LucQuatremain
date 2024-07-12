@@ -1,6 +1,7 @@
 ﻿PlayPvE game = new PlayPvE();
 string playAgain = "n";
 
+// Do-while loop to play the game again or end execution
 do
 {
 game.InitializeGame();

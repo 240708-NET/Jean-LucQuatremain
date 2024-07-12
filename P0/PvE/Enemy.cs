@@ -1,14 +1,17 @@
 public class Enemy
 {
+    // Enemy fields
     public EnemyType enemyType{ get; set; }
     public int health{ get; set; }
 
+    // Constructor used to intialize new enemies with a given type
     public Enemy(EnemyType type)
     {
         enemyType = type;
         setHealth(type);
     }
 
+    // Method to set the health of the enemy based on their monster type
     public void setHealth(EnemyType type)
     {
 
@@ -30,30 +33,9 @@ public class Enemy
                 health = 125;
                 break;
         }
-        /*
-        if(enemyType == EnemyType.Orc)
-        {
-            this.health = 75;
-        }
-        else if(enemyType == EnemyType.Fae)
-        {
-            this.health = 25;
-        }
-        else if(enemyType == EnemyType.Beast)
-        {
-            this.health = 50;
-        }
-        else if(enemyType == EnemyType.Behemoth)
-        {
-            this.health = 125;
-        }
-        else if(enemyType == EnemyType.Minotaur)
-        {
-            this.health = 100;
-        }
-        */
     }
 
+    // Attack method that simulates rolling a specified die based upon enemy monster type and ensuing logic to update player health
     public void Attack(Player player)
     {
         Random rand = new Random();

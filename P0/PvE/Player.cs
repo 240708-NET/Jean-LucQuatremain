@@ -1,9 +1,11 @@
 public class Player
 {
+    // Player fields
     public string name{ get; set; }
     public int health{ get; set; }
     public PlayerClass playerClass{ get; set; }
 
+    // Constructor to intialize a new player with input
     public Player(string name, PlayerClass playerClass)
     {
         this.name = name;
@@ -11,6 +13,7 @@ public class Player
         setHealth(playerClass);
     }
 
+    // Method to set the health of the player based on their chosen class type
     public void setHealth(PlayerClass playerClass){
         if(playerClass == PlayerClass.Mage)
         {
@@ -26,6 +29,7 @@ public class Player
         }
     }
 
+    // Attack method that simulates rolling a specified die based upon player class type and ensuing logic to update enemy health
     public void Attack(Enemy enemy)
     {
         Random rand = new Random();
