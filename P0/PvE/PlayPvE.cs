@@ -110,7 +110,7 @@ public class PlayPvE
             // Check to see if the player won and the game has reached the final round already
             else if (i + 1 == numRounds && userWin)
             {
-                Console.WriteLine("Congrats on clearing the entire dungeon!");
+                Console.WriteLine("Congratulations on clearing the entire dungeon!");
                 Console.WriteLine($"Great job {player.name}, you truly are a Hero!");
             }
             // Check if user lost
@@ -135,6 +135,9 @@ public class PlayPvE
         // While both characters are alive do another round of gameplay
         while (player.health > 0 && enemy.health > 0)
         {
+            // Pause so player can attack
+            Console.Write("Enter any key to attack: ");
+            Console.ReadLine();
             // Player turn to attack the enemy and validate if the player defeated the enemy
             player.Attack(enemy);
             if (enemy.health <= 0)
@@ -144,6 +147,9 @@ public class PlayPvE
                 break;
             }
 
+            // Pause so enemy can attack
+            Console.Write("Enter any key for enemy to attack: ");
+            Console.ReadLine();
             // Enemy turn to attack the player and validate if the enemy defeated the player
             enemy.Attack(player);
             if(player.health <= 0)
