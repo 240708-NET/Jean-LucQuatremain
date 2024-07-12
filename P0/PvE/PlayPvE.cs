@@ -136,7 +136,7 @@ public class PlayPvE
         while (player.health > 0 && enemy.health > 0)
         {
             // Pause so player can attack
-            Console.Write("Enter any key to attack: ");
+            Console.Write("Enter any key to roll die and attack: ");
             Console.ReadLine();
             // Player turn to attack the enemy and validate if the player defeated the enemy
             player.Attack(enemy);
@@ -148,7 +148,7 @@ public class PlayPvE
             }
 
             // Pause so enemy can attack
-            Console.Write("Enter any key for enemy to attack: ");
+            Console.Write("Enter any key for enemy to roll die and attack: ");
             Console.ReadLine();
             // Enemy turn to attack the player and validate if the enemy defeated the player
             enemy.Attack(player);
