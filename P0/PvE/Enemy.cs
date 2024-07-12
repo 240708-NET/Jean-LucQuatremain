@@ -15,19 +15,19 @@ public class Enemy
         switch (type)
         {
             case EnemyType.Fae:
-                health = 50;
+                health = 25;
                 break;
             case EnemyType.Beast:
-                health = 100;
+                health = 50;
                 break;
             case EnemyType.Orc:
-                health = 150;
+                health = 75;
                 break;
             case EnemyType.Minotaur:
-                health = 200;
+                health = 100;
                 break;
             case EnemyType.Behemoth:
-                health = 250;
+                health = 125;
                 break;
         }
         /*

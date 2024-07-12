@@ -100,6 +100,8 @@ public class PlayPvE
             {
                 Console.WriteLine("Congratulations on clearing that room! For winning your health is restored for the next battle!");
                 player.setHealth(player.playerClass);
+                Console.WriteLine("Press any key to continue: ");
+                Console.ReadLine();
             }
             else if (i + 1 == numRounds && userWin)
             {
