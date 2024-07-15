@@ -1,16 +1,19 @@
+using MonsterSlayerReborn.Gameplay;
+
 namespace MonsterSlayerReborn.Models
 {
     public class Player : IUnit
     {
         // Fields
-        public string playerName { get; set; } = "";
+        public string name { get; set; } = "";
         public PlayerClass playerClass{ get; set; }
         public int health { get; set; };
+        public int armorClass { get; set; }
 
         // Methods
         public Player(string playerName, PlayerClass playerClass)
         {
-            this.playerName = playerName;
+            this.name = playerName;
             this.playerClass = playerClass;
             SetHealth();
         }
@@ -31,23 +34,42 @@ namespace MonsterSlayerReborn.Models
             }
         }
 
-        // Attack method COME BACK TO THIS TO FIX NAT 20 and WriteLines
-        void Attack(Enemy enemy)
+        void SetAC()
         {
-            Random rand = new Random();
-            int damage;
             switch(this.playerClass)
             {
                 case PlayerClass.Mage:
-                    damage = rand.Next(1, 21) + 4;
+                    this.armorClass = 10;
                     break;
                 case PlayerClass.Barbarian:
-                    damage = rand.Next(1, 21);
+                    this.armorClass = 12;
                     break;
                 case PlayerClass.Warrior:
-                    damage = rand.Next(1, 21) + 2;
+                    this.armorClass = 14;
                     break;
             }
         }
+
+        void Attack(Enemy enemy)
+        {
+            switch(this.playerClass)
+            {
+                case PlayerClass.Mage:
+                    Attack attack = new Attack(4, this.name, enemy);
+                    attack.Attack();
+                    break;
+                case PlayerClass.Barbarian:
+                    Attack attack = new Attack(0, this.name, enemy);
+                    attack.Attack();
+                    break;
+                case PlayerClass.Warrior:
+                    Attack attack = new Attack(2, this.name, enemy);
+                    attack.Attack();
+                    break;
+            }
+        }
+
+
+
     }
 }
