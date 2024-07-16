@@ -11,14 +11,17 @@ namespace MonsterSlayerReborn.Models
         public int armorClass { get; set; }
 
         // Methods
+        // Constructor to build player character after receiving user inputs during game initialization
         public Player(string playerName, PlayerClass playerClass)
         {
             this.name = playerName;
             this.playerClass = playerClass;
             SetHealth();
+            SetAC();
         }
 
-        void SetHealth()
+        // Method to set player health according to the player's class
+        public void SetHealth()
         {
             switch(this.playerClass)
             {
@@ -34,7 +37,8 @@ namespace MonsterSlayerReborn.Models
             }
         }
 
-        void SetAC()
+        // Method to set the character's AC according to class type
+        public void SetAC()
         {
             switch(this.playerClass)
             {
@@ -50,7 +54,8 @@ namespace MonsterSlayerReborn.Models
             }
         }
 
-        void Attack(Enemy enemy)
+        // Method to call the Attack class to perform attack functionality based on character class and the enemy they are facing
+        public void Attack(Enemy enemy)
         {
             switch(this.playerClass)
             {
@@ -68,8 +73,5 @@ namespace MonsterSlayerReborn.Models
                     break;
             }
         }
-
-
-
     }
 }

@@ -2,7 +2,8 @@ namespace MonsterSlayerReborn.Models
 {
     public interface IUnit
     {
-        void SetHealth();
-        void SetAC();
+        public void SetHealth();
+        public void SetAC();
+        public void Attack(IUnit unit);
     }
 }
