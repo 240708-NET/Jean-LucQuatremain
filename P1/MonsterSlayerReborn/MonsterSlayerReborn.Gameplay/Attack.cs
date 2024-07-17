@@ -36,6 +36,22 @@ namespace MonsterSlayerReborn.Gameplay
                 defendingUnit.health -= damage;
                 Console.WriteLine($"{attackingUnit} attacks {defendingUnit.name} for {damage} damage!");
             }
+            else if(roll == 1)
+            {
+                Console.WriteLine($"{attackingUnit} has critically failed!");
+                switch(rand.Next(1, 4))
+                {
+                    case 1:
+                        Console.WriteLine("You might as well fall on your weapon.");
+                        break;
+                    case 2:
+                        Console.WriteLine("Better luck next time!");
+                        break;
+                    case 3:
+                        Console.WriteLine("How unfortunate.")
+                        break;
+                }
+            }
             else if(roll + modifier > enemyAC)
             {
                 Console.WriteLine($"{attackingUnit} lands a hit!");
