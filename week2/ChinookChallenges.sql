@@ -34,8 +34,9 @@ SELECT YEAR(InvoiceDate) AS Year, COUNT(InvoiceId) AS InvoiceCount, SUM(Total) A
     ORDER BY (Year);
 
 -- how many line items were there for invoice #37
-SELECT *
-    FROM [MyDatabase].[dbo].[Invoice];
+SELECT COUNT(*)
+    FROM [MyDatabase].[dbo].[InvoiceLine]
+    WHERE InvoiceId = 37;
 -- ?? What is this asking?
 
 
