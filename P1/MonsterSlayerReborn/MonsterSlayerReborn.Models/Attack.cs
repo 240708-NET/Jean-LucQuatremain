@@ -1,6 +1,4 @@
-using MonsterSlayerReborn.Models;
-
-namespace MonsterSlayerReborn.Gameplay
+namespace MonsterSlayerReborn.Models
 {
     public class Attack
     {

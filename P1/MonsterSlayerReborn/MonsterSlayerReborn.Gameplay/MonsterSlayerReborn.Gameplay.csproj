@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\MonsterSlayerReborn.Gameplay\MonsterSlayerReborn.Gameplay.csproj" />
+    <ProjectReference Include="..\MonsterSlayerReborn.Models\MonsterSlayerReborn.Models.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,5 +1,3 @@
-using MonsterSlayerReborn.Gameplay;
-
 namespace MonsterSlayerReborn.Models
 {
     public class Enemy : IUnit

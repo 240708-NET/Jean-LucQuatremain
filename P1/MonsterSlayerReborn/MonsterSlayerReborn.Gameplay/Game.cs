@@ -6,6 +6,7 @@ namespace MonsterSlayerReborn.Gameplay
     public int difficultyLevel { get; set; }
     public bool userWin = false;
     Player player;
+    public int roundsPlayed = 0;
 
     public void InitializeGame()
     {
@@ -17,7 +18,7 @@ namespace MonsterSlayerReborn.Gameplay
 
     }
 
-
+    // Method used to get player choice of game difficulty
     private void GetDifficulty()
     {
         Console.WriteLine("Please choose the difficulty you would like to play on.");
@@ -58,6 +59,7 @@ namespace MonsterSlayerReborn.Gameplay
         Console.WriteLine($"Okay, you will be playing on {difficulty} difficulty.\n\n")
     }
 
+    // Method used to get player character information and initialize the player object
     private void InitializePlayer()
     {
         Console.WriteLine("Now onto character creation!");
@@ -98,6 +100,5 @@ namespace MonsterSlayerReborn.Gameplay
                 Console.WriteLine($"{player.name} the Warrior, prepare for battle!");
                 break;
         }
-
     }
 }
