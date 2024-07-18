@@ -11,21 +11,28 @@ namespace HelloEF
             Pet MyPet = new Pet(){Name = "Peter", Cuteness = 10, Chaos = 2, Species = "Rabbit"};
             Console.WriteLine(MyPet.Speak());
 
-            string ConnectionString = "Server=localhost;User=sa;Password=Peterrabbit2020!;Database=Pet;TrustServerCertificate=true;";
-            DataContext Context = new DataContext(options => options.UseSqlServer(ConnectionString));
-        
-        
+            // string ConnectionString = File.ReadAllText("./connectionstring.txt");
+            
+            
+            // DbContextOptions<DataContext> ContextOptions = new DbContextOptionsBuilder<DataContext>().UseSqlServer(ConnectionString).Options;
+            //DataContext Context = new DataContext(ContextOptions);
+
+            /*
+            OR
+                DbContextOptionsBuilder<DataContext> ContextOptions = new DbContextOptionsBuilder<DataContext>().UseSqlServer(ConnectionString);
+                DataContext Context = new DataContext(ContextOptions.Options);
+            */
         }
     }
 
-    class Pet
+    public class Pet
     {
         // Fields
         public int Id { get; set; }
-        public string Name { get; set; }
-        public int Cuteness { get; set; }
-        public long Chaos { get; set; }
-        public string Species { get; set; }
+        public string? Name { get; set; }
+        public int? Cuteness { get; set; }
+        public long? Chaos { get; set; }
+        public string? Species { get; set; }
 
         // Constructors
 
@@ -42,6 +49,12 @@ namespace HelloEF
         public DbSet<Pet> Pets => Set<Pet>();
 
         // Constructors
-        public DataContext(DbContextOptions<DataContext> options) : base(options){}
+        // public DataContext(DbContextOptions<DataContext> options) : base(options) {}
+
+        string connectionString = File.ReadAllText("./connectionstring.txt");
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(connectionString);
+        }
     }
 }
