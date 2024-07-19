@@ -8,13 +8,11 @@ namespace MonsterSlayerReborn.Models
         public PlayerClass playerClass{ get; set; }
         public int health { get; set; };
         public int armorClass { get; set; }
-        private static int IDCounter = 1;
 
         // Methods
         // Constructor to build player character after receiving user inputs during game initialization
         public Player(string playerName, PlayerClass playerClass)
         {
-            this.Id = IDCounter++;
             this.name = playerName;
             this.playerClass = playerClass;
             SetHealth();
