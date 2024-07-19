@@ -13,13 +13,12 @@ namespace MonsterSlayerReborn.Models
             this.defendingUnit = defendingUnit;
         }
 
-        public string Attack()
+        public void AttackUnit()
         {
             Random rand = new Random();
             int damage = 0;
-            int enemyAC = defendingUnit.armorClass;
+            int enemyAC = defendingUnit.ArmorClass;
             int roll = rand.Next(1, 21);
-            bool hit = false;
 
             if(roll == 20)
             {
@@ -31,8 +30,8 @@ namespace MonsterSlayerReborn.Models
                     damage += rand.Next(5, 13);
                 }
                 damage += this.modifier;
-                defendingUnit.health -= damage;
-                Console.WriteLine($"{attackingUnit} attacks {defendingUnit.name} for {damage} damage!");
+                defendingUnit.Health -= damage;
+                Console.WriteLine($"{attackingUnit} attacks {defendingUnit.Name} for {damage} damage!");
             }
             else if(roll == 1)
             {
@@ -46,7 +45,7 @@ namespace MonsterSlayerReborn.Models
                         Console.WriteLine("Better luck next time!");
                         break;
                     case 3:
-                        Console.WriteLine("How unfortunate.")
+                        Console.WriteLine("How unfortunate.");
                         break;
                 }
             }
@@ -56,8 +55,8 @@ namespace MonsterSlayerReborn.Models
                 Console.Write("Press any key to roll for damage: ");
                 Console.ReadLine();
                 damage = rand.Next(1, 13) + modifier;
-                defendingUnit.health -= damage;
-                Console.WriteLine($"{attackingUnit} attacks {defendingUnit.name} for {damage} damage!");
+                defendingUnit.Health -= damage;
+                Console.WriteLine($"{attackingUnit} attacks {defendingUnit.Name} for {damage} damage!");
             }
             else
             {
@@ -71,7 +70,7 @@ namespace MonsterSlayerReborn.Models
                         Console.WriteLine("Better luck next time!");
                         break;
                     case 3:
-                        Console.WriteLine("You should try being better.")
+                        Console.WriteLine("You should try being better.");
                         break;
                 }
             }

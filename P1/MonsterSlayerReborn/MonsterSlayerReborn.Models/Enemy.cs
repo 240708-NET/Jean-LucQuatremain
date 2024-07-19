@@ -3,10 +3,10 @@ namespace MonsterSlayerReborn.Models
     public class Enemy : IUnit
     {
         // Fields
-        public string name { get; set; } = "";
-        public EnemyType enemyType{ get; set; }
-        public int health { get; set; };
-        public int armorClass { get; set; }
+        public string Name { get; set; } = "";
+        public EnemyType enemyType { get; set; }
+        public int Health { get; set; }
+        public int ArmorClass { get; set; }
 
         // Methods
         // Constructor to build enemy based on randomizer in gameplay
@@ -21,22 +21,22 @@ namespace MonsterSlayerReborn.Models
         // Method to set enemy health according to the enemy's type
         public void SetHealth()
         {
-            switch(this.enemyType)
+            switch (this.enemyType)
             {
-                case enemyType.Fae:
-                    this.health = 50;
+                case EnemyType.Fae:
+                    this.Health = 50;
                     break;
-                case enemyType.Beast:
-                    this.health = 70;
+                case EnemyType.Beast:
+                    this.Health = 70;
                     break;
-                case enemyType.Orc:
-                    this.health = 90;
+                case EnemyType.Orc:
+                    this.Health = 90;
                     break;
-                case enemyType.Minotaur:
-                    this.health = 110;
+                case EnemyType.Minotaur:
+                    this.Health = 110;
                     break;
-                case enemyType.Behemoth:
-                    this.health = 125;
+                case EnemyType.Behemoth:
+                    this.Health = 125;
                     break;
             }
         }
@@ -44,22 +44,22 @@ namespace MonsterSlayerReborn.Models
         // Method to set the enemy's AC according to enemy type
         public void SetAC()
         {
-            switch(this.enemyType)
+            switch (this.enemyType)
             {
                 case EnemyType.Fae:
-                    this.armorClass = 4;
+                    this.ArmorClass = 4;
                     break;
                 case EnemyType.Beast:
-                    this.armorClass = 6;
+                    this.ArmorClass = 6;
                     break;
                 case EnemyType.Orc:
-                    this.armorClass = 8;
+                    this.ArmorClass = 8;
                     break;
                 case EnemyType.Minotaur:
-                    this.armorClass = 10;
+                    this.ArmorClass = 10;
                     break;
                 case EnemyType.Behemoth:
-                    this.armorClass = 12;
+                    this.ArmorClass = 12;
                     break;
             }
         }
@@ -67,51 +67,55 @@ namespace MonsterSlayerReborn.Models
         // Method to set enemy's name during enemy construction
         public void SetName()
         {
-            switch(this.enemyType)
+            switch (this.enemyType)
             {
                 case EnemyType.Fae:
-                    this.name = "Puck";
+                    this.Name = "Puck";
                     break;
                 case EnemyType.Beast:
-                    this.name = "Fenrir";
+                    this.Name = "Fenrir";
                     break;
                 case EnemyType.Orc:
-                    this.name = "Gorbag";
+                    this.Name = "Gorbag";
                     break;
                 case EnemyType.Minotaur:
-                    this.name = "Asterius";
+                    this.Name = "Asterius";
                     break;
                 case EnemyType.Behemoth:
-                    this.name = "Behemoth";
+                    this.Name = "Behemoth";
                     break;
             }
         }
 
         // Method to call the Attack class to perform attack functionality based on enemy type and the player they are facing
-        public void Attack(Player player)
+        public void Attack(IUnit unit)
         {
-            switch(this.enemyType)
+            Attack attackInstance;
+            if (unit is Player player)
             {
-                case EnemyType.Fae:
-                    Attack attack = new Attack(0, this.name, player);
-                    attack.Attack();
-                    break;
-                case EnemyType.Beast:
-                    Attack attack = new Attack(2, this.name, player);
-                    attack.Attack();
-                    break;
-                case EnemyType.Orc:
-                    Attack attack = new Attack(1, this.name, player);
-                    attack.Attack();
-                    break;
-                case EnemyType.Minotaur:
-                    Attack attack = new Attack(4, this.name, player);
-                    attack.Attack();
-                    break;
-                case EnemyType.Behemoth:
-                    Attack attack = new Attack(6, this.name, player);
-                    attack.Attack();
-                    break;
+                switch (this.enemyType)
+                {
+                    case EnemyType.Fae:
+                        attackInstance = new Attack(0, this.Name, player);
+                        attackInstance.AttackUnit();
+                        break;
+                    case EnemyType.Beast:
+                        attackInstance = new Attack(2, this.Name, player);
+                        attackInstance.AttackUnit();
+                        break;
+                    case EnemyType.Orc:
+                        attackInstance = new Attack(1, this.Name, player);
+                        attackInstance.AttackUnit();
+                        break;
+                    case EnemyType.Minotaur:
+                        attackInstance = new Attack(4, this.Name, player);
+                        attackInstance.AttackUnit();
+                        break;
+                    case EnemyType.Behemoth:
+                        attackInstance = new Attack(6, this.Name, player);
+                        attackInstance.AttackUnit();
+                        break;
+                }
             }
         }
     }

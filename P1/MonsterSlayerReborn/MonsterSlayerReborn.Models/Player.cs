@@ -4,16 +4,16 @@ namespace MonsterSlayerReborn.Models
     {
         // Fields
         public int Id { get; private set; }
-        public string name { get; set; } = "";
-        public PlayerClass playerClass{ get; set; }
-        public int health { get; set; };
-        public int armorClass { get; set; }
+        public string Name { get; set; } = "";
+        public PlayerClass playerClass { get; set; }
+        public int Health { get; set; }
+        public int ArmorClass { get; set; }
 
         // Methods
         // Constructor to build player character after receiving user inputs during game initialization
         public Player(string playerName, PlayerClass playerClass)
         {
-            this.name = playerName;
+            this.Name = playerName;
             this.playerClass = playerClass;
             SetHealth();
             SetAC();
@@ -22,16 +22,16 @@ namespace MonsterSlayerReborn.Models
         // Method to set player health according to the player's class
         public void SetHealth()
         {
-            switch(this.playerClass)
+            switch (this.playerClass)
             {
                 case PlayerClass.Mage:
-                    this.health = 75;
+                    this.Health = 75;
                     break;
                 case PlayerClass.Barbarian:
-                    this.health = 100;
+                    this.Health = 100;
                     break;
                 case PlayerClass.Warrior:
-                    this.health = 125;
+                    this.Health = 125;
                     break;
             }
         }
@@ -39,37 +39,41 @@ namespace MonsterSlayerReborn.Models
         // Method to set the character's AC according to class type
         public void SetAC()
         {
-            switch(this.playerClass)
+            switch (this.playerClass)
             {
                 case PlayerClass.Mage:
-                    this.armorClass = 10;
+                    this.ArmorClass = 10;
                     break;
                 case PlayerClass.Barbarian:
-                    this.armorClass = 12;
+                    this.ArmorClass = 12;
                     break;
                 case PlayerClass.Warrior:
-                    this.armorClass = 14;
+                    this.ArmorClass = 14;
                     break;
             }
         }
 
         // Method to call the Attack class to perform attack functionality based on character class and the enemy they are facing
-        public void Attack(Enemy enemy)
+        public void Attack(IUnit unit)
         {
-            switch(this.playerClass)
+            Attack attackInstance;
+            if (unit is Enemy enemy)
             {
-                case PlayerClass.Mage:
-                    Attack attack = new Attack(4, this.name, enemy);
-                    attack.Attack();
-                    break;
-                case PlayerClass.Barbarian:
-                    Attack attack = new Attack(0, this.name, enemy);
-                    attack.Attack();
-                    break;
-                case PlayerClass.Warrior:
-                    Attack attack = new Attack(2, this.name, enemy);
-                    attack.Attack();
-                    break;
+                switch (this.playerClass)
+                {
+                    case PlayerClass.Mage:
+                        attackInstance = new Attack(4, this.Name, enemy);
+                        attackInstance.AttackUnit();
+                        break;
+                    case PlayerClass.Barbarian:
+                        attackInstance = new Attack(0, this.Name, enemy);
+                        attackInstance.AttackUnit();
+                        break;
+                    case PlayerClass.Warrior:
+                        attackInstance = new Attack(2, this.Name, enemy);
+                        attackInstance.AttackUnit();
+                        break;
+                }
             }
         }
     }
