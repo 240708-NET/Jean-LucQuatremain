@@ -1,0 +1,1 @@
+From program.cs ensure the repsoitory is called to save the state of the game when the player decides to stop playing or the player has lost.

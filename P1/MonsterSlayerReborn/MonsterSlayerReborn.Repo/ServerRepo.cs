@@ -21,7 +21,13 @@ namespace MonsterSlayerReborn.Repo
 
         public void SaveGameInfo(Game game)
         {
+            context.Games.Add(game);
+            context.SaveChanges();
+        }
 
+        public List<Game> GetPastGames()
+        {
+            return context.Games.ToList();
         }
     }
 }

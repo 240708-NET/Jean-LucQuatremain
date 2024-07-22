@@ -5,4 +5,5 @@ namespace MonsterSlayerReborn.Repo;
 public interface IRepo
 {
     void SaveGameInfo(Game game);
+    List<Game> GetPastGames();
 }

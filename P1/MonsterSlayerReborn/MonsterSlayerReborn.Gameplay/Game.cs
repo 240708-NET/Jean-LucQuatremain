@@ -4,6 +4,7 @@ namespace MonsterSlayerReborn.Gameplay
 {
     public class Game
     {
+        public int gameId { get; set; }
         public string difficulty { get; set; }
         public int difficultyLevel { get; set; }
         public bool userWin = false;
@@ -15,9 +16,53 @@ namespace MonsterSlayerReborn.Gameplay
             Console.WriteLine("Welcome to Monster Slayer!\n\n");
             GetDifficulty();
             InitializePlayer();
+        }
 
+        public void Play()
+        {
+            bool keepPlaying = false;
 
+            Console.WriteLine("Let's enter the first dungeon!");
+            Console.WriteLine("Press any key to continue: ");
+            Console.ReadLine();
+            do
+            {
+                PlayRound();
+                roundsPlayed++;
+                if (userWin)
+                {
+                    Console.WriteLine("Congratulations on clearing that room! For winning your health is restored for the next battle!");
+                    player.SetHealth();
+                    Console.Write("Would you like to keep playing?(y/n): ");
+                    string keepPlayingStr = Console.ReadLine();
+                    bool validInput = false;
+                    while(!validInput)
+                    {
+                        if (keepPlayingStr == "y" || keepPlayingStr == "Y")
+                        {
+                            keepPlaying = true;
+                            validInput = true;
+                        }
+                        else if (keepPlayingStr == "n" || keepPlayingStr == "N")
+                        {
+                            keepPlaying = false;
+                            validInput = true;
+                        }
+                        else
+                        {
+                            Console.Write("Please input a valid repsonse (y/n): ");
+                            keepPlayingStr = Console.ReadLine();
+                            validInput = false;
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine($"You put up a valiant effort {player.Name}. Maybe you will slay the enemy next time.");
+                }
+            } while (userWin && keepPlaying);
 
+            
         }
 
         // Method used to get player choice of game difficulty
@@ -101,6 +146,51 @@ namespace MonsterSlayerReborn.Gameplay
                     player = new Player(pName, PlayerClass.Warrior);
                     Console.WriteLine($"{player.Name} the Warrior, prepare for battle!");
                     break;
+            }
+        }
+
+        public void PlayRound()
+        {
+            Random randEnemy = new Random();
+            EnemyType randomEnemyType = (EnemyType)randEnemy.Next(0, difficultyLevel);
+            Enemy enemy = new Enemy(randomEnemyType);
+
+            Console.WriteLine($"{player.Name} you approach {enemy.Name} in this room.");
+            Console.WriteLine("Please press enter when you are ready to battle!");
+            Console.ReadLine();
+
+            // While both characters are alive do another round of gameplay
+            while (player.Health > 0 && enemy.Health > 0)
+            {
+                // Pause so player can attack
+                Console.Write("Enter any key to roll die and attack: ");
+                Console.ReadLine();
+                // Player turn to attack the enemy and validate if the player defeated the enemy
+                player.Attack(enemy);
+                if (enemy.Health <= 0)
+                {
+                    Console.WriteLine($"You have defeated {enemy.Name}!");
+                    userWin = true;
+                    break;
+                }
+
+                // Pause so enemy can attack
+                Console.Write("Enter any key for enemy to roll die and attack: ");
+                Console.ReadLine();
+                // Enemy turn to attack the player and validate if the enemy defeated the player
+                enemy.Attack(player);
+                if (player.Health <= 0)
+                {
+                    Console.WriteLine($"You were defeated by {enemy.Name}.");
+                    userWin = false;
+                    break;
+                }
+
+                //Round by round output of current game state
+                Console.WriteLine($"{player.Name} Health: {player.Health}");
+                Console.WriteLine($"{enemy.Name} Health: {enemy.Health}");
+                Console.WriteLine("Press any key to continue..");
+                Console.ReadLine();
             }
         }
     }
