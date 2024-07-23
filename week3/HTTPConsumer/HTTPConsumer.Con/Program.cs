@@ -11,18 +11,26 @@ namespace HTTPConsumer.Con
         {
             Console.WriteLine("Hello again!");
 
-            string uri = "https://jsonplaceholder.typicode.com/posts/";
+            string uriPosts = "https://jsonplaceholder.typicode.com/posts/";
+            string uriUsers = "https://jsonplaceholder.typicode.com/users";
 
             HttpClient client = new HttpClient();
 
-            string response = await client.GetStringAsync(uri);
+            string responsePosts = await client.GetStringAsync(uriPosts);
+            string responseUsers = await client.GetStringAsync(uriUsers);
 
             // Console.WriteLine(response);
 
-            List<Post> postList = JsonSerializer.Deserialize<List<Post>>(response);
+            List<Post> postList = JsonSerializer.Deserialize<List<Post>>(responsePosts);
+            List<User> userList = JsonSerializer.Deserialize<List<User>>(responseUsers);
         
             foreach (var i in postList)
-                Console.WriteLine(i.id + ": " + i.title);
+                foreach (var j in userList)
+                    if(i.userId == j.id)
+                    {
+                        Console.WriteLine(i.title + " by: " + j.name);
+                        break;
+                    }
         }
     }
 }
