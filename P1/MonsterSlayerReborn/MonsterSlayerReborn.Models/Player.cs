@@ -10,6 +10,12 @@ namespace MonsterSlayerReborn.Models
         public int ArmorClass { get; set; }
 
         // Methods
+
+        // Parameterless constructor for EF Core
+        public Player()
+        {
+        }
+        
         // Constructor to build player character after receiving user inputs during game initialization
         public Player(string playerName, PlayerClass playerClass)
         {

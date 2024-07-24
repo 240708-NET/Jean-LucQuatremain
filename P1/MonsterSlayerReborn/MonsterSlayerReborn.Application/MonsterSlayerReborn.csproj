@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MonsterSlayerReborn.Repo\MonsterSlayerReborn.Repo.csproj" />
     <ProjectReference Include="..\MonsterSlayerReborn.Gameplay\MonsterSlayerReborn.Gameplay.csproj" />
+    <ProjectReference Include="..\MonsterSlayerReborn.Models\MonsterSlayerReborn.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>

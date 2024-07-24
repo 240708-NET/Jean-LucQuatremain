@@ -10,7 +10,7 @@ namespace MonsterSlayerReborn.Repo
         static readonly string connectionstring = "";
         static GameContext context;
 
-        public ServerRepo( string SC )
+        public ServerRepo( string connectionstring )
         {
             DbContextOptions<GameContext> options;
             options = new DbContextOptionsBuilder<GameContext>()

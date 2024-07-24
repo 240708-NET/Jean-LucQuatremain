@@ -7,8 +7,8 @@ namespace MonsterSlayerReborn.Gameplay
         public int gameId { get; set; }
         public string difficulty { get; set; }
         public int difficultyLevel { get; set; }
-        public bool userWin = false;
-        Player player;
+        private bool userWin = false;
+        public Player player { get; set; }
         public int roundsPlayed = 0;
 
         public void InitializeGame()
@@ -62,7 +62,7 @@ namespace MonsterSlayerReborn.Gameplay
                 }
             } while (userWin && keepPlaying);
 
-            
+            Console.WriteLine("Thank you for playing Monster Slayer: Reborn!");
         }
 
         // Method used to get player choice of game difficulty
