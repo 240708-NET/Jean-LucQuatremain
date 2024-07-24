@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonsterSlayerReborn", "MonsterSlayerReborn.App\MonsterSlayerReborn.csproj", "{C19ADC86-5B50-4933-9A05-0B24A1E73476}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonsterSlayerReborn", "MonsterSlayerReborn.Application\MonsterSlayerReborn.csproj", "{C19ADC86-5B50-4933-9A05-0B24A1E73476}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonsterSlayerReborn.Repo", "MonsterSlayerReborn.Repo\MonsterSlayerReborn.Repo.csproj", "{27714D03-9509-4A8C-AE4A-39A3ABA54323}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonsterSlayerReborn.Gameplay", "MonsterSlayerReborn.Gameplay\MonsterSlayerReborn.Gameplay.csproj", "{BE8449ED-B2F1-44DA-9925-FC2E20157F1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonsterSlayerReborn.Models", "MonsterSlayerReborn.Models\MonsterSlayerReborn.Models.csproj", "{75D748A5-D69C-458D-89D5-EFA0E437DD9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +28,13 @@ Global
 		{27714D03-9509-4A8C-AE4A-39A3ABA54323}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27714D03-9509-4A8C-AE4A-39A3ABA54323}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27714D03-9509-4A8C-AE4A-39A3ABA54323}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE8449ED-B2F1-44DA-9925-FC2E20157F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE8449ED-B2F1-44DA-9925-FC2E20157F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE8449ED-B2F1-44DA-9925-FC2E20157F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE8449ED-B2F1-44DA-9925-FC2E20157F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75D748A5-D69C-458D-89D5-EFA0E437DD9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75D748A5-D69C-458D-89D5-EFA0E437DD9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75D748A5-D69C-458D-89D5-EFA0E437DD9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75D748A5-D69C-458D-89D5-EFA0E437DD9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
