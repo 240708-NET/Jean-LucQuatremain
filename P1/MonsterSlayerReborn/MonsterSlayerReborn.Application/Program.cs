@@ -55,7 +55,7 @@ namespace MonsterSlayerReborn.Application
 
                         foreach (var g in gameList)
                         {
-                            Console.WriteLine($"Player: {g.player.Name} Class: {g.player.playerClass} Difficulty: {g.difficulty} Rounds Completed: {g.roundsPlayed}");
+                            Console.WriteLine($"Player: {g.Player.Name} Class: {g.Player.playerClass} Difficulty: {g.difficulty} Rounds Completed: {g.roundsPlayed}");
                         }
                         break;
                 }

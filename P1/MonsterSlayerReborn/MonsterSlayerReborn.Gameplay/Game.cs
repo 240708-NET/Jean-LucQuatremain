@@ -1,15 +1,19 @@
+using System;
+using System.ComponentModel.DataAnnotations;
 using MonsterSlayerReborn.Models;
 
 namespace MonsterSlayerReborn.Gameplay
 {
     public class Game
     {
+        [Key]
         public int gameId { get; set; }
         public string difficulty { get; set; }
         public int difficultyLevel { get; set; }
-        private bool userWin = false;
-        public Player player { get; set; }
         public int roundsPlayed = 0;
+        private bool userWin = false;
+        public int PlayerId { get; set; }
+        public Player Player { get; set; }
 
         public void InitializeGame()
         {
@@ -32,7 +36,7 @@ namespace MonsterSlayerReborn.Gameplay
                 if (userWin)
                 {
                     Console.WriteLine("Congratulations on clearing that room! For winning your health is restored for the next battle!");
-                    player.SetHealth();
+                    Player.SetHealth();
                     Console.Write("Would you like to keep playing?(y/n): ");
                     string keepPlayingStr = Console.ReadLine();
                     bool validInput = false;
@@ -58,7 +62,7 @@ namespace MonsterSlayerReborn.Gameplay
                 }
                 else
                 {
-                    Console.WriteLine($"You put up a valiant effort {player.Name}. Maybe you will slay the enemy next time.");
+                    Console.WriteLine($"You put up a valiant effort {Player.Name}. Maybe you will slay the enemy next time.");
                 }
             } while (userWin && keepPlaying);
 
@@ -135,16 +139,16 @@ namespace MonsterSlayerReborn.Gameplay
             switch (classChoiceNum)
             {
                 case 1:
-                    player = new Player(pName, PlayerClass.Mage);
-                    Console.WriteLine($"{player.Name} the Mage, prepare for battle!");
+                    Player = new Player(pName, PlayerClass.Mage);
+                    Console.WriteLine($"{Player.Name} the Mage, prepare for battle!");
                     break;
                 case 2:
-                    player = new Player(pName, PlayerClass.Barbarian);
-                    Console.WriteLine($"{player.Name} the Barbarian, prepare for battle!");
+                    Player = new Player(pName, PlayerClass.Barbarian);
+                    Console.WriteLine($"{Player.Name} the Barbarian, prepare for battle!");
                     break;
                 case 3:
-                    player = new Player(pName, PlayerClass.Warrior);
-                    Console.WriteLine($"{player.Name} the Warrior, prepare for battle!");
+                    Player = new Player(pName, PlayerClass.Warrior);
+                    Console.WriteLine($"{Player.Name} the Warrior, prepare for battle!");
                     break;
             }
         }
@@ -155,18 +159,18 @@ namespace MonsterSlayerReborn.Gameplay
             EnemyType randomEnemyType = (EnemyType)randEnemy.Next(0, difficultyLevel);
             Enemy enemy = new Enemy(randomEnemyType);
 
-            Console.WriteLine($"{player.Name} you approach {enemy.Name} in this room.");
+            Console.WriteLine($"{Player.Name} you approach {enemy.Name} in this room.");
             Console.WriteLine("Please press enter when you are ready to battle!");
             Console.ReadLine();
 
             // While both characters are alive do another round of gameplay
-            while (player.Health > 0 && enemy.Health > 0)
+            while (Player.Health > 0 && enemy.Health > 0)
             {
                 // Pause so player can attack
                 Console.Write("Enter any key to roll die and attack: ");
                 Console.ReadLine();
                 // Player turn to attack the enemy and validate if the player defeated the enemy
-                player.Attack(enemy);
+                Player.Attack(enemy);
                 if (enemy.Health <= 0)
                 {
                     Console.WriteLine($"You have defeated {enemy.Name}!");
@@ -178,8 +182,8 @@ namespace MonsterSlayerReborn.Gameplay
                 Console.Write("Enter any key for enemy to roll die and attack: ");
                 Console.ReadLine();
                 // Enemy turn to attack the player and validate if the enemy defeated the player
-                enemy.Attack(player);
-                if (player.Health <= 0)
+                enemy.Attack(Player);
+                if (Player.Health <= 0)
                 {
                     Console.WriteLine($"You were defeated by {enemy.Name}.");
                     userWin = false;
@@ -187,7 +191,7 @@ namespace MonsterSlayerReborn.Gameplay
                 }
 
                 //Round by round output of current game state
-                Console.WriteLine($"{player.Name} Health: {player.Health}");
+                Console.WriteLine($"{Player.Name} Health: {Player.Health}");
                 Console.WriteLine($"{enemy.Name} Health: {enemy.Health}");
                 Console.WriteLine("Press any key to continue..");
                 Console.ReadLine();

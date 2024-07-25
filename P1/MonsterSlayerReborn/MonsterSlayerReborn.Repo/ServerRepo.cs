@@ -27,7 +27,9 @@ namespace MonsterSlayerReborn.Repo
 
         public List<Game> GetPastGames()
         {
-            return context.Games.ToList();
+            return context.Games
+                .Include(g => g.Player)
+                .ToList();
         }
     }
 }
