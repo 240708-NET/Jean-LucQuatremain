@@ -39,6 +39,9 @@ namespace MonsterSlayerReborn.Repo.Migrations
                     b.Property<int>("difficultyLevel")
                         .HasColumnType("int");
 
+                    b.Property<int>("roundsPlayed")
+                        .HasColumnType("int");
+
                     b.HasKey("gameId");
 
                     b.HasIndex("PlayerId");

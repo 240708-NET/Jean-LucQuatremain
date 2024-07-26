@@ -10,7 +10,7 @@ namespace MonsterSlayerReborn.Gameplay
         public int gameId { get; set; }
         public string difficulty { get; set; }
         public int difficultyLevel { get; set; }
-        public int roundsPlayed = 0;
+        public int roundsPlayed { get; set; }
         private bool userWin = false;
         public int PlayerId { get; set; }
         public Player Player { get; set; }

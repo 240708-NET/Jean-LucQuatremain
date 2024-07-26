@@ -11,8 +11,8 @@ using MonsterSlayerReborn.Repo;
 namespace MonsterSlayerReborn.Repo.Migrations
 {
     [DbContext(typeof(GameContext))]
-    [Migration("20240725220747_AddRoundsPlayedColumn")]
-    partial class AddRoundsPlayedColumn
+    [Migration("20240726162324_UpdateRoundsPlayed")]
+    partial class UpdateRoundsPlayed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace MonsterSlayerReborn.Repo.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("gameId"));
 
+                    b.Property<int>("PlayerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("difficulty")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -39,12 +42,12 @@ namespace MonsterSlayerReborn.Repo.Migrations
                     b.Property<int>("difficultyLevel")
                         .HasColumnType("int");
 
-                    b.Property<int>("playerId")
+                    b.Property<int>("roundsPlayed")
                         .HasColumnType("int");
 
                     b.HasKey("gameId");
 
-                    b.HasIndex("playerId");
+                    b.HasIndex("PlayerId");
 
                     b.ToTable("Games");
                 });
@@ -72,18 +75,18 @@ namespace MonsterSlayerReborn.Repo.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Player");
+                    b.ToTable("Players");
                 });
 
             modelBuilder.Entity("MonsterSlayerReborn.Gameplay.Game", b =>
                 {
-                    b.HasOne("MonsterSlayerReborn.Models.Player", "player")
+                    b.HasOne("MonsterSlayerReborn.Models.Player", "Player")
                         .WithMany()
-                        .HasForeignKey("playerId")
+                        .HasForeignKey("PlayerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("player");
+                    b.Navigation("Player");
                 });
 #pragma warning restore 612, 618
         }
