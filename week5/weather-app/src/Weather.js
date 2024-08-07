@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const Weather = () => {
@@ -8,18 +8,18 @@ const Weather = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `https://freetestapi.com/api/v1/weathers/1`
+        `https://freetestapi.com/api/v1/weathers?search=${city}`
       );
+      if(response.data.length === 0)
+        alert('City not found');
+      else
+        setWeatherData(response.data);
       setWeatherData(response.data);
-      console.log(response.data); //You can see all the weather data in console log
+      console.log(response.data); // You can see all the weather data in console log
     } catch (error) {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   const handleInputChange = (e) => {
     setCity(e.target.value);
@@ -43,25 +43,17 @@ const Weather = () => {
       </form>
       {weatherData ? (
         <>
-          <h2>{weatherData.name}</h2>
-          <p>City: {weatherData.main.city}</p>
-          <p>Country: {weatherData.main.country}</p>
-          <p>Temperature: {weatherData.main.temperature}</p>
-          <p>Description: {weatherData.main.weather_description}</p>
-          <p>Humidity: {weatherData.main.humidity}</p>
-          <p>Wind Speed: {weatherData.main.wind_speed}</p>
-
-
-
-
-
-
-          {/* <p>Temperature: {weatherData.main.temp}°C</p>
-          <p>Description: {weatherData.weather[0].description}</p>
-          <p>Feels like : {weatherData.main.feels_like}°C</p>
-          <p>Humidity : {weatherData.main.humidity}%</p>
-          <p>Pressure : {weatherData.main.pressure}</p>
-          <p>Wind Speed : {weatherData.wind.speed}m/s</p> */}
+          <h2>Weather Data</h2>
+          {weatherData.map((data, index) => (
+            <div key={index}>
+              <p>City: {data.city}</p>
+              <p>Country: {data.country}</p>
+              <p>Temperature: {data.temperature}</p>
+              <p>Description: {data.weather_description}</p>
+              <p>Humidity: {data.humidity}</p>
+              <p>Wind Speed: {data.wind_speed}</p>
+            </div>
+          ))}
         </>
       ) : (
         <p>Loading weather data...</p>
